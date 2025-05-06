@@ -2,12 +2,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { Container, Box } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import EmiCalculatorForm from './components/EmiCalculatorForm';
+import CurrencyConverter from './components/CurrencyConverter';
 
 const Calculator = () => (
   <Box>
-    <EmiCalculatorForm /> {/* Embedding the EMI Calculator component here */}
+    <EmiCalculatorForm />
   </Box>
 );
 
@@ -16,16 +17,13 @@ const Schedule = () => (
     <Typography variant="h5" align="center" sx={{ mt: 4 }}>
       📈 Amortization Schedule
     </Typography>
-    {/* Amortization schedule content will be here */}
+    {/* Implement amortization schedule here */}
   </Box>
 );
 
 const Currency = () => (
   <Box>
-    <Typography variant="h5" align="center" sx={{ mt: 4 }}>
-      💱 Live Currency Conversion
-    </Typography>
-    {/* Currency conversion content will be here */}
+    <CurrencyConverter />
   </Box>
 );
 
@@ -45,3 +43,4 @@ const App = () => {
 };
 
 export default App;
+
