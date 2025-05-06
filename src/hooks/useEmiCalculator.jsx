@@ -1,23 +1,28 @@
-// src/hooks/useEmiCalculator.js
 import { useState } from 'react';
 
 const useEmiCalculator = () => {
-  const [emi, setEmi] = useState(null);
-  const [principal, setPrincipal] = useState(0);
-  const [rate, setRate] = useState(0);
-  const [duration, setDuration] = useState(0);
-  
-  const calculateEmi = () => {
-    const P = parseFloat(principal);
-    const R = parseFloat(rate) / 12 / 100;  // Monthly interest rate
-    const N = parseInt(duration);
+  const [principal, setPrincipal] = useState(localStorage.getItem('principal') || '');
+  const [rate, setRate] = useState(localStorage.getItem('rate') || '');
+  const [duration, setDuration] = useState(localStorage.getItem('duration') || '');
+  const [emi, setEmi] = useState(localStorage.getItem('emi') || null);
 
-    if (P && R && N) {
-      const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
-      setEmi(emi.toFixed(2));
-    } else {
-      setEmi(null);
-    }
+  const calculateEmi = () => {
+    const p = parseFloat(principal);
+    const r = parseFloat(rate) / 12 / 100;
+    const n = parseInt(duration);
+
+    if (!p || !r || !n) return;
+
+    const emiVal = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const fixedEmi = emiVal.toFixed(2);
+
+    // Store values
+    localStorage.setItem('principal', principal);
+    localStorage.setItem('rate', rate);
+    localStorage.setItem('duration', duration);
+    localStorage.setItem('emi', fixedEmi);
+
+    setEmi(fixedEmi);
   };
 
   return {
