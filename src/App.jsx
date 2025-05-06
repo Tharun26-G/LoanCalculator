@@ -1,10 +1,10 @@
-// src/App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Container, Box, Typography } from '@mui/material';
 import EmiCalculatorForm from './components/EmiCalculatorForm';
 import CurrencyConverter from './components/CurrencyConverter';
+import AmortizationSchedule from './components/AmortizationSchedule';
 
 const Calculator = () => (
   <Box>
@@ -14,16 +14,24 @@ const Calculator = () => (
 
 const Schedule = () => (
   <Box>
-    <Typography variant="h5" align="center" sx={{ mt: 4 }}>
-      📈 Amortization Schedule
-    </Typography>
-    {/* Implement amortization schedule here */}
+    <AmortizationSchedule />
   </Box>
 );
 
 const Currency = () => (
   <Box>
     <CurrencyConverter />
+  </Box>
+);
+
+const NotFound = () => (
+  <Box sx={{ mt: 4, textAlign: 'center' }}>
+    <Typography variant="h4" color="error">
+      404 - Page Not Found
+    </Typography>
+    <Typography variant="subtitle1" sx={{ mt: 2 }}>
+      The page you are looking for does not exist.
+    </Typography>
   </Box>
 );
 
@@ -36,6 +44,7 @@ const App = () => {
           <Route path="/" element={<Calculator />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/currency" element={<Currency />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
     </>
@@ -43,4 +52,3 @@ const App = () => {
 };
 
 export default App;
-
