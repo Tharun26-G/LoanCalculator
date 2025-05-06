@@ -1,17 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Button } from '@mui/material'
+// src/App.jsx
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { Container, Box } from '@mui/material';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Calculator = () => <Box>📐 EMI Calculator</Box>;
+const Schedule = () => <Box>📈 Amortization Schedule</Box>;
+const Currency = () => <Box>💱 Live Currency Conversion</Box>;
 
+const App = () => {
   return (
     <>
-      <Button> Okay </Button>
+      <Navbar />
+      <Container maxWidth="lg" sx={{ mt: 12, px: 2 }}>
+        <Routes>
+          <Route path="/" element={<Calculator />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/currency" element={<Currency />} />
+        </Routes>
+      </Container>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
