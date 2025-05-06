@@ -3,10 +3,31 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Container, Box } from '@mui/material';
+import EmiCalculatorForm from './components/EmiCalculatorForm';
 
-const Calculator = () => <Box>📐 EMI Calculator</Box>;
-const Schedule = () => <Box>📈 Amortization Schedule</Box>;
-const Currency = () => <Box>💱 Live Currency Conversion</Box>;
+const Calculator = () => (
+  <Box>
+    <EmiCalculatorForm /> {/* Embedding the EMI Calculator component here */}
+  </Box>
+);
+
+const Schedule = () => (
+  <Box>
+    <Typography variant="h5" align="center" sx={{ mt: 4 }}>
+      📈 Amortization Schedule
+    </Typography>
+    {/* Amortization schedule content will be here */}
+  </Box>
+);
+
+const Currency = () => (
+  <Box>
+    <Typography variant="h5" align="center" sx={{ mt: 4 }}>
+      💱 Live Currency Conversion
+    </Typography>
+    {/* Currency conversion content will be here */}
+  </Box>
+);
 
 const App = () => {
   return (
